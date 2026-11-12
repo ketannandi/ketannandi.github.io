@@ -72,6 +72,24 @@ def get_author(orcid, mailto):
     q = f"?mailto={urllib.parse.quote(mailto)}" if mailto else ""
     return http_get_json(f"{OPENALEX}/authors/orcid:{orcid}{q}")
 
+def find_duplicate_profiles(main_id, mailto):
+    """OpenAlex sometimes splits one researcher into several profiles.
+    Find other profiles with his full name (must contain 'Ketan' and 'Nandi')."""
+    params = {"search": "Ketan Kumar Nandi", "per_page": "25"}
+    if mailto:
+        params["mailto"] = mailto
+    try:
+        data = http_get_json(f"{OPENALEX}/authors?" + urllib.parse.urlencode(params))
+    except RuntimeError:
+        return []
+    ids = []
+    for a in data.get("results", []):
+        names = [a.get("display_name") or ""] + (a.get("display_name_alternatives") or [])
+        if a.get("id") != main_id and any(
+                "ketan" in n.lower() and "nandi" in n.lower() for n in names):
+            ids.append(a["id"])
+    return ids
+
 def get_works_for_author(author_id, mailto):
     short = author_id.rsplit("/", 1)[-1]
     works, cursor = [], "*"
@@ -175,6 +193,7 @@ def convert(work, my_ids, orcid, quartiles):
         "doi": norm_doi(work.get("doi")),
         "citations": work.get("cited_by_count") or 0,
         "authors": authors,
+        "_by_year": {c["year"]: c.get("cited_by_count", 0) for c in work.get("counts_by_year", []) if c.get("year")},
     }
     q = quartiles.get(venue.lower()) if kind == "journal" else None
     if q:
@@ -201,7 +220,11 @@ def build(cfg):
 
     print("Fetching works…")
     works = get_works_for_author(author["id"], mailto)
-    print(f"  {len(works)} works on OpenAlex profile")
+    print(f"  {len(works)} works on main OpenAlex profile")
+    for extra_id in find_duplicate_profiles(author["id"], mailto):
+        more = get_works_for_author(extra_id, mailto)
+        print(f"  +{len(more)} works from duplicate profile {extra_id}")
+        works.extend(more)
 
     have = {norm_doi(w.get("doi")) for w in works if w.get("doi")}
     missing = [d for d in orcid_dois(orcid) if d not in have]
@@ -225,7 +248,8 @@ def build(cfg):
             items[key] = item
         else:  # duplicate: keep the better record but the higher citation count
             better = item if (rank[item["type"]], bool(item["doi"])) > (rank[old["type"]], bool(old["doi"])) else old
-            better["citations"] = max(item["citations"], old["citations"])
+            most = item if item["citations"] >= old["citations"] else old
+            better["citations"], better["_by_year"] = most["citations"], most.get("_by_year", {})
             items[key] = better
 
     for w in works:
@@ -237,19 +261,38 @@ def build(cfg):
 
     pubs = sorted(items.values(), key=lambda p: (-(p["year"] or 0), {"journal": 0, "chapter": 1, "conference": 2}[p["type"]], p["title"]))
 
+    # Metrics are computed from every paper on the site, so citations on papers
+    # that OpenAlex filed under a duplicate profile are counted too.
+    cites = sorted((p["citations"] for p in pubs), reverse=True)
+    total = sum(cites)
+    h_index = sum(1 for i, c in enumerate(cites, 1) if c >= i)
+    i10 = sum(1 for c in cites if c >= 10)
     stats = author.get("summary_stats") or {}
-    by_year = sorted(({"year": c["year"], "citations": c.get("cited_by_count", 0)}
-                      for c in author.get("counts_by_year", []) if c.get("year")), key=lambda c: c["year"])
+    profile_total = author.get("cited_by_count", 0)
+    if profile_total > total:  # profile also counts items not shown (e.g. preprints)
+        total = profile_total
+    h_index = max(h_index, stats.get("h_index", 0))
+    i10 = max(i10, stats.get("i10_index", 0))
+
+    per_year = {}
+    for p in pubs:
+        for y, c in p.get("_by_year", {}).items():
+            per_year[y] = per_year.get(y, 0) + c
+    if sum(per_year.values()) < sum(c.get("cited_by_count", 0) for c in author.get("counts_by_year", [])):
+        per_year = {c["year"]: c.get("cited_by_count", 0) for c in author.get("counts_by_year", []) if c.get("year")}
+    by_year = [{"year": y, "citations": per_year[y]} for y in sorted(per_year)]
     while by_year and by_year[0]["citations"] == 0:
         by_year.pop(0)
+    for p in pubs:
+        p.pop("_by_year", None)
 
     return {
         "updated": date.today().isoformat(),
         "source": "OpenAlex",
         "metrics": {
-            "citations": author.get("cited_by_count", 0),
-            "h_index": stats.get("h_index", 0),
-            "i10_index": stats.get("i10_index", 0),
+            "citations": total,
+            "h_index": h_index,
+            "i10_index": i10,
         },
         "citations_by_year": by_year,
         "publications": pubs,
