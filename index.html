@@ -179,6 +179,19 @@ section.block{padding:110px 0 40px}
 .b-q2{color:var(--sand);border-color:rgba(233,182,90,.4);background:var(--sand-soft)}
 .b-first{color:#c7b8ff;border-color:rgba(199,184,255,.35);background:rgba(199,184,255,.08)}
 .b-type{color:var(--muted);border-color:var(--line2)}
+.pub-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.thumb{display:block;width:210px;aspect-ratio:4/3;background:#f3f5f6;border:1px solid var(--line2);border-radius:12px;padding:6px;cursor:zoom-in;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.thumb img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.thumb:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 40px -18px rgba(65,209,198,.45)}
+.thumb:hover img{transform:scale(1.06)}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,8,11,.92);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;gap:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:min(1200px,94vw);max-height:76vh;background:#fff;border-radius:12px;padding:10px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+.lb figcaption{max-width:min(1000px,92vw);text-align:center;color:#cfd6db;font-size:15px;line-height:1.5}
+.lb figcaption small{display:block;color:var(--dim);font-size:12.5px;margin-top:6px;font-family:var(--mono)}
+.lb figcaption a{color:var(--accent)}
+.lb-close{position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--text);font-size:22px;cursor:pointer}
+.lb-close:hover{border-color:var(--accent);color:var(--accent)}
 .doi{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line2);padding:8px 12px;border-radius:10px;white-space:nowrap;transition:all .2s}
 .doi:hover{color:var(--accent);border-color:var(--accent)}
 .empty{color:var(--muted);padding:30px;text-align:center;border:1px dashed var(--line2);border-radius:16px}
@@ -283,6 +296,7 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
   .indices,.exp-grid,.contact-grid{grid-template-columns:1fr}
 }
 @media (max-width:860px){
+  .thumb{width:160px}
   .nav-links{position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:rgba(11,14,18,.97);padding:16px 22px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s}
   .nav-links.open{transform:none}
   .nav-links a{padding:12px 14px}
@@ -307,6 +321,9 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
   .pillars,.course-grid,.steps,.links{grid-template-columns:1fr}
   .idx{grid-template-columns:1fr}
   .pub{grid-template-columns:1fr;gap:10px}
+  .pub-side{flex-direction:column-reverse;align-items:stretch}
+  .pub-side .doi{align-self:flex-start}
+  .thumb{width:100%}
   .facts div{grid-template-columns:112px 1fr}
   .facts dt{font-size:10px;letter-spacing:.06em}
   .chip-float{display:none}
@@ -701,6 +718,12 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
   </div>
 </section>
 
+<figure class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Figure viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" alt="">
+  <figcaption id="lbCap"></figcaption>
+</figure>
+
 <footer>
   <div class="wrap foot">
     <span>© <span id="yr">2026</span> Dr. Ketan Kumar Nandi · Also cited as K. K. Nandi</span>
@@ -740,10 +763,34 @@ function renderPubs(){
       `<span class="badge b-type">${TYPE_LABEL[p.type]||"OTHER"}</span>`,
       p.citations>0 ? `<span class="badge b-cite">${p.citations} CITATION${p.citations>1?"S":""}</span>` : ""
     ].join("");
-    const doi = p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI ↗</a>` : "<span></span>";
-    return `<article class="pub"><div class="yr">${esc(p.year)}</div><div><h3>${esc(p.title)}</h3><div class="au">${authorHtml(p.authors)}</div><div class="ven"><i>${esc(p.venue)}</i>${p.details?", "+esc(p.details):""}</div><div class="badges">${badges}</div></div>${doi}</article>`;
+    const doi = p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI ↗</a>` : "";
+    // A figure is shown if assets/pubs/<doi with / replaced by _>.jpg exists
+    const thumb = p.doi ? `<button class="thumb" hidden data-i="${PUBS.indexOf(p)}" aria-label="Enlarge figure"><img decoding="async" alt="Figure from: ${esc(p.title)}" src="assets/pubs/${esc(p.doi.toLowerCase().replace(/\//g,"_"))}.jpg"></button>` : "";
+    return `<article class="pub"><div class="yr">${esc(p.year)}</div><div><h3>${esc(p.title)}</h3><div class="au">${authorHtml(p.authors)}</div><div class="ven"><i>${esc(p.venue)}</i>${p.details?", "+esc(p.details):""}</div><div class="badges">${badges}</div></div><div class="pub-side">${thumb}${doi}</div></article>`;
   }).join("");
+  box.querySelectorAll(".thumb img").forEach(img=>{
+    const show=()=>img.parentElement.hidden=false, drop=()=>img.parentElement.remove();
+    if(img.complete){ img.naturalWidth?show():drop(); }
+    img.addEventListener("load",show); img.addEventListener("error",drop);
+  });
 }
+
+/* ---------- figure viewer ---------- */
+const lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg"), lbCap=document.getElementById("lbCap");
+function openFigure(p,src){
+  const first=(p.authors[0]?.name||"").split(",")[0];
+  const cite=`${first}${p.authors.length>2?" et al.":p.authors.length===2?" & "+p.authors[1].name.split(",")[0]:""} (${p.year}), ${p.venue}`;
+  lbImg.src=src; lbImg.alt="Figure from: "+p.title;
+  lbCap.innerHTML=`${esc(p.title)}<small>Figure from ${esc(cite)} · <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">read the paper ↗</a></small>`;
+  lb.classList.add("open"); document.body.style.overflow="hidden";
+}
+function closeFigure(){lb.classList.remove("open");document.body.style.overflow=""}
+document.getElementById("pubList").addEventListener("click",e=>{
+  const t=e.target.closest(".thumb"); if(!t) return;
+  openFigure(PUBS[+t.dataset.i], t.querySelector("img").src);
+});
+lb.addEventListener("click",e=>{ if(e.target===lb||e.target.id==="lbClose") closeFigure(); });
+addEventListener("keydown",e=>{ if(e.key==="Escape") closeFigure(); });
 function setCount(id,val){
   const el=document.getElementById(id); if(!el||val==null) return;
   el.dataset.count=val;
