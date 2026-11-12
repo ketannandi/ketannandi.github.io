@@ -26,6 +26,7 @@
   --radius:18px; --max:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
@@ -104,6 +105,15 @@ h1 em{color:var(--accent);font-style:italic}
 .stat::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .5s}
 .stat:hover::before{width:100%}
 
+.cy{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg2);padding:20px 24px;display:flex;gap:28px;align-items:flex-end}
+.cy-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);flex:0 0 auto;align-self:center;max-width:110px;line-height:1.5}
+.cy-bars{flex:1;display:flex;gap:10px;align-items:flex-end;height:110px}
+.cy-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.cy-bar i{display:block;width:100%;max-width:46px;border-radius:6px 6px 2px 2px;background:linear-gradient(var(--accent),rgba(65,209,198,.25));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.cy-bar b{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+.cy-bar span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.b-cite{color:#e9edf0;border-color:var(--line2);background:rgba(255,255,255,.04)}
+
 /* ---------- SECTIONS ---------- */
 section.block{padding:110px 0 40px}
 .sec-head{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;margin-bottom:48px}
@@ -150,7 +160,8 @@ section.block{padding:110px 0 40px}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}}
 
 /* publications */
-.pub-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.pub-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;align-items:center}
+.pub-meta .upd{background:none;border:0;color:var(--dim);font-family:var(--mono);font-size:11.5px;margin-left:auto}
 .pub-meta span{font-size:13px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);padding:6px 12px;border-radius:10px}
 .pub-meta b{color:var(--text);font-weight:600}
 .pubs{display:grid;gap:12px}
@@ -287,6 +298,8 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
   .search{margin-left:0;width:100%}
 }
 @media (max-width:560px){
+  .cy{flex-direction:column;align-items:stretch;gap:12px}.cy-label{max-width:none}
+  .pub-meta .upd{margin-left:0}
   .wrap{padding:0 18px}
   .stat-grid{grid-template-columns:1fr 1fr}
   .stat{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)}
@@ -379,7 +392,7 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
       <div class="ring"></div>
       <div class="frame"><img src="assets/photo.jpg" alt="Portrait of Dr. Ketan Kumar Nandi"></div>
       <div class="chip-float c2"><span class="dot"></span>Open to <b>PhD scholars</b></div>
-      <div class="chip-float c1"><b>163</b> citations · h-index <b>7</b></div>
+      <div class="chip-float c1"><b id="hero-cit">163</b> citations · h-index <b id="hero-h">7</b></div>
     </div>
   </div>
   <div class="scroll-cue">SCROLL<span></span></div>
@@ -390,15 +403,19 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
   <div class="wrap">
     <div class="stats-head rv">
       <h2>The record, in numbers</h2>
-      <small>Citation metrics: Google Scholar, Nov 2026</small>
+      <small id="m-src">Citation metrics: Google Scholar · Nov 2026</small>
     </div>
     <div class="stat-grid rv">
-      <div class="stat"><div class="num" data-count="163">0</div><div class="lab">Citations</div></div>
-      <div class="stat"><div class="num" data-count="7">0</div><div class="lab">h-index</div></div>
-      <div class="stat"><div class="num" data-count="8">0</div><div class="lab">Q1 journal articles</div></div>
+      <div class="stat"><div class="num" id="m-cit" data-count="163">0</div><div class="lab">Citations</div></div>
+      <div class="stat"><div class="num" id="m-h" data-count="7">0</div><div class="lab">h-index</div></div>
+      <div class="stat"><div class="num" id="m-q1" data-count="8">0</div><div class="lab">Q1 journal articles</div></div>
       <div class="stat"><div class="num" data-count="7">0</div><div class="lab">Ph.D. scholars currently guided</div></div>
       <div class="stat"><div class="num" data-count="11">0</div><div class="lab">M.Tech theses guided</div></div>
       <div class="stat"><div class="num">₹<span data-count="90">0</span><sup>L</sup></div><div class="lab">Research funding as Co-PI</div></div>
+    </div>
+    <div class="cy rv" id="cy" hidden>
+      <div class="cy-label">Citations per year</div>
+      <div class="cy-bars" id="cyBars"></div>
     </div>
   </div>
 </section>
@@ -692,72 +709,86 @@ footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
 </footer>
 
 <script>
-/* ---------- publication data ---------- */
-const PUBS = [
-  // journal articles
-  {t:"journal",y:2027,q:"Q2",au:"Maurya, O. P., Nandi, K. K., & Dutta, S.",ti:"Process-based response of flow–vegetation interactions in bifurcated channel systems: A laboratory investigation",v:"Journal of Hydraulic Engineering",d:"153(1), 04026059",doi:"10.1061/JHEND8.HYENG-14905"},
-  {t:"journal",y:2026,q:"Q1",au:"Sahoo, S., Kumar, P., Nandi, K. K., & Khatua, K. K.",ti:"A comparative analysis of experimental and numerical longitudinal velocity distributions in unsteady open channel flows",v:"Ocean Engineering",d:"362, 126518",doi:"10.1016/j.oceaneng.2026.126518"},
-  {t:"journal",y:2026,q:"Q2",au:"Maurya, O. P., Modalavalasa, S., Nandi, K. K., & Dutta, S.",ti:"Secondary current and vorticity regime of sand-mined sinuous channels",v:"Journal of Ecohydraulics",d:"1–15",doi:"10.1080/24705357.2026.2636282"},
-  {t:"journal",y:2025,q:"Q1",au:"Maurya, O. P., Nandi, K. K., & Dutta, S.",ti:"Harnessing vegetation as a nature-based solution for integrated river corridor management: A path towards harmonized human–nature synergy",v:"Ecohydrology",d:"18(5), e70094",doi:"10.1002/eco.70094"},
-  {t:"journal",y:2025,q:"Q1",au:"Modalavalasa, S., Nandi, K. K., Chembolu, V., Dutta, S., & Kulkarni, V.",ti:"Experimental insights into the hydraulic behaviour of sinuous channel due to vegetated floodplain corridor",v:"Ecohydrology",d:"18(5), e70084",doi:"10.1002/eco.70084"},
-  {t:"journal",y:2024,q:"Q1",au:"Nandi, K. K., Kakati, R., Dutta, S., & Khatua, K. K.",ti:"Exploring the influence of vegetated mid-channel bar on flow and turbulence in bifurcated channels: An experimental approach",v:"Advances in Water Resources",d:"189, 104727",doi:"10.1016/j.advwatres.2024.104727"},
-  {t:"journal",y:2023,q:"Q1",au:"Nandi, K. K., Pradhan, C., Dutta, S., & Khatua, K. K.",ti:"Identifying the stability trajectory of a large braided Brahmaputra River using reach-scale process-based approach",v:"Journal of Hydrology",d:"626, 130329",doi:"10.1016/j.jhydrol.2023.130329"},
-  {t:"journal",y:2023,q:"Q1",au:"Pradhan, C., Nandi, K. K., Bharti, R., & Dutta, S.",ti:"Developing process-based geomorphic indicators for understanding river dynamics of a highly braided system: Implications for designing resilience based management strategies",v:"CATENA",d:"232, 107411",doi:"10.1016/j.catena.2023.107411"},
-  {t:"journal",y:2022,q:"Q1",au:"Nandi, K. K., Pradhan, C., Padhee, S. K., Dutta, S., & Khatua, K. K.",ti:"Understanding the entropy-based morphological variability and energy expenditure mechanism of a large braided river system",v:"Journal of Hydrology",d:"615, 128662",doi:"10.1016/j.jhydrol.2022.128662"},
-  {t:"journal",y:2022,q:"Q1",au:"Nandi, K. K., Pradhan, C., Dutta, S., & Khatua, K. K.",ti:"How dynamic is the Brahmaputra? Understanding the process–form–vegetation interactions for hierarchies of energy dissipation",v:"Ecohydrology",d:"15(3), e2416",doi:"10.1002/eco.2416"},
-  // books & chapters
-  {t:"chapter",y:2022,au:"Padhee, S. K., Pradhan, C., Nandi, K. K., & Dutta, S.",ti:"Development of a semi-distributed rainfall-runoff model for water budgeting in macropore dominated hilly river basins",v:"Soil-Water, Agriculture, and Climate Change: Exploring Linkages",d:"pp. 17–34, Springer, Cham"},
-  {t:"chapter",y:2022,au:"Maurya, O. P., Nandi, K. K., Modalavalasa, S., & Dutta, S.",ti:"Flow hydrodynamics influences due to flood plain sand mining in a meandering channel",v:"North-East Research Conclave",d:"pp. 245–251, Springer Nature, Singapore"},
-  {t:"chapter",y:2022,au:"Kumar, A., Nandi, K. K., & Dutta, S.",ti:"Effects of anthropogenic stress and water security in Himalayan urban river watershed",v:"Int. Conference on River Corridor Research and Management (RCRM)",d:"pp. 187–199, Springer Nature, Singapore"},
-  {t:"chapter",y:2022,au:"Maurya, O. P., Nandi, K. K., Modalavalasa, S., & Dutta, S.",ti:"Numerical investigation of various turbulence models for a sinuous channel with sand mining pit",v:"Int. Conference on River Corridor Research and Management (RCRM)",d:"pp. 95–106, Springer Nature, Singapore"},
-  // conferences
-  {t:"conference",y:2022,au:"Nandi, K. K., Pradhan, C., Khatua, K. K., & Dutta, S.",ti:"Assessment of braided dynamics of a large river system with respect to the energy dissipation mechanism using cloud computing technique",v:"AGU Fall Meeting",d:"EP32B-07"},
-  {t:"conference",y:2022,au:"Nandi, K. K., Pradhan, C., Khatua, K. K., & Dutta, S.",ti:"Morphological characterization of large braided Brahmaputra River using high-resolution satellite imageries",v:"Sustainable Technologies for River Erosion Alleviation and Management",d:"Guwahati, Assam"},
-  {t:"conference",y:2021,au:"Nandi, K. K., Akkimi, A., Pradhan, C., Dutta, S., & Khatua, K. K.",ti:"Entropy based relation between in-stream green corridor and channel stability of a large braided Brahmaputra River",v:"AGU Fall Meeting",d:"EP25C-1329"},
-  {t:"conference",y:2021,au:"Nandi, K. K., Pradhan, C., Khatua, K. K., & Dutta, S.",ti:"Sediment transport and morphological characterization for a large braided river using hydrodynamic modeling",v:"World's Large Rivers Conference",d:"Moscow, Russia"},
-  {t:"conference",y:2021,au:"Nandi, K. K., Padhee, S., & Dutta, S.",ti:"Development of conceptual framework for hydro-ecological security across Himalayan river basins",v:"RCRM-2021",d:"IIT Jammu"},
-  {t:"conference",y:2020,au:"Nandi, K. K., Pradhan, C., Sultan, J., Dutta, S., & Khatua, K. K.",ti:"Energy dissipation modeling in highly braided Brahmaputra River",v:"HYDRO-2020",d:"NIT Rourkela · Best Presentation Award"},
-  {t:"conference",y:2019,au:"Nandi, K. K., et al.",ti:"Groundwater recharge estimation with remote sensing inputs in Kosi Basin",v:"ISRS-ISG National Symposium 2019",d:"NESAC, Meghalaya"},
-  {t:"conference",y:2017,au:"Nandi, K. K., Dash, A., & Das, P. K.",ti:"Short term stream-flow prediction for Hirakud Reservoir using ARIMA model",v:"HYDRO-2017",d:"L. D. College of Engineering, Ahmedabad"}
-];
+/* ---------- publication data ----------
+   Publications and citation numbers come from data/site-data.json,
+   which a GitHub Action refreshes every week (see scripts/update_data.py). */
 const TYPE_LABEL = {journal:"JOURNAL",chapter:"BOOK CHAPTER",conference:"CONFERENCE"};
-let filter = "all", query = "";
+let PUBS = [], filter = "all", query = "";
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function fmtDate(iso){const d=new Date(iso+"T00:00:00");return isNaN(d)?iso:`${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`}
+function authorHtml(list){
+  if(!list || !list.length) return "";
+  let shown = list;
+  if(list.length > 10){ const meI = list.findIndex(a=>a.me); shown = list.slice(0,8); if(meI>=8) shown.push(list[meI]); }
+  const names = shown.map(a=>a.me?`<b>${esc(a.name)}</b>`:esc(a.name));
+  if(list.length > shown.length) return names.join(", ")+", et al.";
+  return names.length>1 ? names.slice(0,-1).join(", ")+", & "+names[names.length-1] : names[0];
+}
 function renderPubs(){
-  const list = document.getElementById("pubList");
+  const box = document.getElementById("pubList");
   const q = query.toLowerCase();
-  const items = PUBS.filter(p => (filter==="all"||p.t===filter) &&
-    (!q || (p.ti+" "+p.au+" "+p.v).toLowerCase().includes(q)));
-  if(!items.length){list.innerHTML='<div class="empty">No publications match your search.</div>';return}
-  list.innerHTML = items.map(p=>{
-    const first = p.au.startsWith("Nandi");
-    const au = esc(p.au).replace(/Nandi, K\. K\./,"<b>Nandi, K. K.</b>");
+  const items = PUBS.filter(p => (filter==="all"||p.type===filter) &&
+    (!q || (p.title+" "+p.authors.map(a=>a.name).join(" ")+" "+p.venue).toLowerCase().includes(q)));
+  if(!items.length){box.innerHTML='<div class="empty">No publications match your search.</div>';return}
+  box.innerHTML = items.map(p=>{
+    const first = p.authors.length && p.authors[0].me;
     const badges = [
-      p.q ? `<span class="badge ${p.q==="Q1"?"b-q1":"b-q2"}">${p.q}</span>` : "",
+      p.quartile ? `<span class="badge ${p.quartile==="Q1"?"b-q1":"b-q2"}">${esc(p.quartile)}</span>` : "",
       first ? `<span class="badge b-first">FIRST AUTHOR</span>` : "",
-      `<span class="badge b-type">${TYPE_LABEL[p.t]}</span>`
+      `<span class="badge b-type">${TYPE_LABEL[p.type]||"OTHER"}</span>`,
+      p.citations>0 ? `<span class="badge b-cite">${p.citations} CITATION${p.citations>1?"S":""}</span>` : ""
     ].join("");
-    const doi = p.doi ? `<a class="doi" href="https://doi.org/${p.doi}" target="_blank" rel="noopener">DOI ↗</a>` : "<span></span>";
-    return `<article class="pub"><div class="yr">${p.y}</div><div><h3>${esc(p.ti)}</h3><div class="au">${au}</div><div class="ven"><i>${esc(p.v)}</i>${p.d?", "+esc(p.d):""}</div><div class="badges">${badges}</div></div>${doi}</article>`;
+    const doi = p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI ↗</a>` : "<span></span>";
+    return `<article class="pub"><div class="yr">${esc(p.year)}</div><div><h3>${esc(p.title)}</h3><div class="au">${authorHtml(p.authors)}</div><div class="ven"><i>${esc(p.venue)}</i>${p.details?", "+esc(p.details):""}</div><div class="badges">${badges}</div></div>${doi}</article>`;
   }).join("");
 }
-function renderMeta(){
-  const j = PUBS.filter(p=>p.t==="journal");
-  const q1 = j.filter(p=>p.q==="Q1").length;
-  const fa = PUBS.filter(p=>p.au.startsWith("Nandi")).length;
+function setCount(id,val){
+  const el=document.getElementById(id); if(!el||val==null) return;
+  el.dataset.count=val;
+  if(el.closest(".rv.in")) countUp(el); // already on screen: animate to the new value
+}
+function applyData(d){
+  PUBS = d.publications || [];
+  const m = d.metrics || {};
+  const j = PUBS.filter(p=>p.type==="journal");
+  const q1 = j.filter(p=>p.quartile==="Q1").length;
+  const fa = PUBS.filter(p=>p.authors.length && p.authors[0].me).length;
+  setCount("m-cit",m.citations); setCount("m-h",m.h_index); setCount("m-q1",q1);
+  if(m.citations!=null) document.getElementById("hero-cit").textContent=m.citations;
+  if(m.h_index!=null) document.getElementById("hero-h").textContent=m.h_index;
+  const when = d.updated ? fmtDate(d.updated) : "";
+  document.getElementById("m-src").textContent = `Citation metrics: ${d.source||"—"} · updated ${when}`;
   document.getElementById("pubMeta").innerHTML =
-    `<span><b>${j.length}</b> journal articles</span><span><b>${q1}</b> in Q1 journals</span><span><b>${fa}</b> as first author</span><span><b>163</b> citations</span>`;
+    `<span><b>${j.length}</b> journal articles</span><span><b>${q1}</b> in Q1 journals</span><span><b>${fa}</b> as first author</span><span><b>${m.citations??"—"}</b> citations</span><span class="upd">Auto-updated weekly · last ${esc(when)}</span>`;
   ["all","journal","chapter","conference"].forEach(k=>{
-    document.getElementById("c-"+k).textContent = k==="all"?PUBS.length:PUBS.filter(p=>p.t===k).length;
+    document.getElementById("c-"+k).textContent = k==="all"?PUBS.length:PUBS.filter(p=>p.type===k).length;
   });
+  renderPubs(); renderCitationChart(d.citations_by_year||[]);
+}
+function renderCitationChart(rows){
+  const wrap=document.getElementById("cy"), bars=document.getElementById("cyBars");
+  if(!rows.length){wrap.hidden=true;return}
+  // fill missing years with zero so the bars line up
+  const map=Object.fromEntries(rows.map(r=>[r.year,r.citations]));
+  const ys=rows.map(r=>r.year), y0=Math.min(...ys), y1=Math.max(...ys), full=[];
+  for(let y=y0;y<=y1;y++) full.push({year:y,citations:map[y]||0});
+  const max=Math.max(...full.map(r=>r.citations),1);
+  bars.innerHTML=full.map(r=>`<div class="cy-bar" title="${r.citations} citations in ${r.year}"><b>${r.citations}</b><i data-h="${Math.max(4,Math.round(r.citations/max*100))}"></i><span>${r.year}</span></div>`).join("");
+  wrap.hidden=false;
+  const grow=()=>bars.querySelectorAll("i").forEach(i=>i.style.height=`calc(${i.dataset.h}% - 34px)`);
+  if(wrap.classList.contains("in")) requestAnimationFrame(grow); else wrap.addEventListener("revealed",grow,{once:true});
 }
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener("click",()=>{
   document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove("on"));
   b.classList.add("on"); filter=b.dataset.filter; renderPubs();
 }));
 document.getElementById("pubSearch").addEventListener("input",e=>{query=e.target.value;renderPubs()});
-renderMeta(); renderPubs();
+fetch("data/site-data.json",{cache:"no-store"})
+  .then(r=>{if(!r.ok) throw new Error(r.status); return r.json()})
+  .then(applyData)
+  .catch(()=>{document.getElementById("pubList").innerHTML='<div class="empty">The publication list could not be loaded right now. Please see <a href="https://scholar.google.com/citations?user=STKW8C8AAAAJ&hl=en" style="color:var(--accent)">Google Scholar</a>.</div>'});
 
 /* ---------- teaching tabs ---------- */
 document.querySelectorAll('[data-pane]').forEach(b=>b.addEventListener("click",()=>{
@@ -795,6 +826,7 @@ if("IntersectionObserver" in window){
   const io = new IntersectionObserver(es=>es.forEach(en=>{
     if(!en.isIntersecting) return;
     en.target.classList.add("in");
+    en.target.dispatchEvent(new Event("revealed"));
     en.target.querySelectorAll("[data-count]").forEach(countUp);
     io.unobserve(en.target);
   }),{threshold:.12});

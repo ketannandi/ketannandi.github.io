@@ -1,0 +1,36 @@
+{
+  "_help": "Settings for the weekly automatic update. You normally never need to edit this file. See the notes on each item below.",
+
+  "orcid": "0000-0002-9058-4761",
+  "contact_email": "ketannandi@gmail.com",
+
+  "_help_quartiles": "Journal ranking badges (Q1/Q2...). OpenAlex does not provide quartiles, so add a line here when a paper appears in a new journal. Use the journal name in lowercase.",
+  "journal_quartiles": {
+    "journal of hydrology": "Q1",
+    "advances in water resources": "Q1",
+    "catena": "Q1",
+    "ecohydrology": "Q1",
+    "ocean engineering": "Q1",
+    "journal of ecohydraulics": "Q2",
+    "journal of hydraulic engineering": "Q2"
+  },
+
+  "_help_exclude": "If a paper that is NOT his ever appears on the site, paste its DOI (e.g. 10.1016/j.xxx.2025.123) or its exact title here, inside the brackets, in quotes, separated by commas.",
+  "exclude": [],
+
+  "_help_extra": "Items that online databases usually miss (conference papers without a DOI). They are always shown. Add new ones in the same format.",
+  "extra_publications": [
+    {"type": "conference", "year": 2022, "title": "Assessment of braided dynamics of a large river system with respect to the energy dissipation mechanism using cloud computing technique", "venue": "AGU Fall Meeting", "details": "EP32B-07", "authors": ["Nandi, K. K.", "Pradhan, C.", "Khatua, K. K.", "Dutta, S."]},
+    {"type": "conference", "year": 2022, "title": "Morphological characterization of large braided Brahmaputra River using high-resolution satellite imageries", "venue": "Sustainable Technologies for River Erosion Alleviation and Management", "details": "Guwahati, Assam", "authors": ["Nandi, K. K.", "Pradhan, C.", "Khatua, K. K.", "Dutta, S."]},
+    {"type": "conference", "year": 2021, "title": "Entropy based relation between in-stream green corridor and channel stability of a large braided Brahmaputra River", "venue": "AGU Fall Meeting", "details": "EP25C-1329", "authors": ["Nandi, K. K.", "Akkimi, A.", "Pradhan, C.", "Dutta, S.", "Khatua, K. K."]},
+    {"type": "conference", "year": 2021, "title": "Sediment transport and morphological characterization for a large braided river using hydrodynamic modeling", "venue": "World's Large Rivers Conference", "details": "Moscow, Russia", "authors": ["Nandi, K. K.", "Pradhan, C.", "Khatua, K. K.", "Dutta, S."]},
+    {"type": "conference", "year": 2021, "title": "Development of conceptual framework for hydro-ecological security across Himalayan river basins", "venue": "RCRM-2021", "details": "IIT Jammu", "authors": ["Nandi, K. K.", "Padhee, S.", "Dutta, S."]},
+    {"type": "conference", "year": 2020, "title": "Energy dissipation modeling in highly braided Brahmaputra River", "venue": "HYDRO-2020", "details": "NIT Rourkela · Best Presentation Award", "authors": ["Nandi, K. K.", "Pradhan, C.", "Sultan, J.", "Dutta, S.", "Khatua, K. K."]},
+    {"type": "conference", "year": 2019, "title": "Groundwater recharge estimation with remote sensing inputs in Kosi Basin", "venue": "ISRS-ISG National Symposium 2019", "details": "NESAC, Meghalaya", "authors": ["Nandi, K. K."]},
+    {"type": "conference", "year": 2017, "title": "Short term stream-flow prediction for Hirakud Reservoir using ARIMA model", "venue": "HYDRO-2017", "details": "L. D. College of Engineering, Ahmedabad", "authors": ["Nandi, K. K.", "Dash, A.", "Das, P. K."]},
+    {"type": "chapter", "year": 2022, "title": "Development of a semi-distributed rainfall-runoff model for water budgeting in macropore dominated hilly river basins", "venue": "Soil-Water, Agriculture, and Climate Change: Exploring Linkages", "details": "pp. 17–34, Springer, Cham", "authors": ["Padhee, S. K.", "Pradhan, C.", "Nandi, K. K.", "Dutta, S."]},
+    {"type": "chapter", "year": 2022, "title": "Flow hydrodynamics influences due to flood plain sand mining in a meandering channel", "venue": "North-East Research Conclave", "details": "pp. 245–251, Springer Nature, Singapore", "authors": ["Maurya, O. P.", "Nandi, K. K.", "Modalavalasa, S.", "Dutta, S."]},
+    {"type": "chapter", "year": 2022, "title": "Effects of anthropogenic stress and water security in Himalayan urban river watershed", "venue": "Int. Conference on River Corridor Research and Management (RCRM)", "details": "pp. 187–199, Springer Nature, Singapore", "authors": ["Kumar, A.", "Nandi, K. K.", "Dutta, S."]},
+    {"type": "chapter", "year": 2022, "title": "Numerical investigation of various turbulence models for a sinuous channel with sand mining pit", "venue": "Int. Conference on River Corridor Research and Management (RCRM)", "details": "pp. 95–106, Springer Nature, Singapore", "authors": ["Maurya, O. P.", "Nandi, K. K.", "Modalavalasa, S.", "Dutta, S."]}
+  ]
+}

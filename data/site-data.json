@@ -1,0 +1,612 @@
+{
+  "updated": "2026-11-12",
+  "source": "Google Scholar",
+  "metrics": {
+    "citations": 163,
+    "h_index": 7,
+    "i10_index": 7
+  },
+  "citations_by_year": [],
+  "publications": [
+    {
+      "type": "journal",
+      "year": 2027,
+      "title": "Process-based response of flow–vegetation interactions in bifurcated channel systems: A laboratory investigation",
+      "venue": "Journal of Hydraulic Engineering",
+      "details": "153(1), 04026059",
+      "doi": "10.1061/jhend8.hyeng-14905",
+      "citations": 0,
+      "quartile": "Q2",
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2026,
+      "title": "A comparative analysis of experimental and numerical longitudinal velocity distributions in unsteady open channel flows",
+      "venue": "Ocean Engineering",
+      "details": "362, 126518",
+      "doi": "10.1016/j.oceaneng.2026.126518",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Sahoo, S.",
+          "me": false
+        },
+        {
+          "name": "Kumar, P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2026,
+      "title": "Secondary current and vorticity regime of sand-mined sinuous channels",
+      "venue": "Journal of Ecohydraulics",
+      "details": "1–15",
+      "doi": "10.1080/24705357.2026.2636282",
+      "citations": 0,
+      "quartile": "Q2",
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Modalavalasa, S.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2025,
+      "title": "Harnessing vegetation as a nature-based solution for integrated river corridor management: A path towards harmonized human–nature synergy",
+      "venue": "Ecohydrology",
+      "details": "18(5), e70094",
+      "doi": "10.1002/eco.70094",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2025,
+      "title": "Experimental insights into the hydraulic behaviour of sinuous channel due to vegetated floodplain corridor",
+      "venue": "Ecohydrology",
+      "details": "18(5), e70084",
+      "doi": "10.1002/eco.70084",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Modalavalasa, S.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Chembolu, V.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Kulkarni, V.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2024,
+      "title": "Exploring the influence of vegetated mid-channel bar on flow and turbulence in bifurcated channels: An experimental approach",
+      "venue": "Advances in Water Resources",
+      "details": "189, 104727",
+      "doi": "10.1016/j.advwatres.2024.104727",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Kakati, R.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2023,
+      "title": "Identifying the stability trajectory of a large braided Brahmaputra River using reach-scale process-based approach",
+      "venue": "Journal of Hydrology",
+      "details": "626, 130329",
+      "doi": "10.1016/j.jhydrol.2023.130329",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2023,
+      "title": "Developing process-based geomorphic indicators for understanding river dynamics of a highly braided system: Implications for designing resilience based management strategies",
+      "venue": "CATENA",
+      "details": "232, 107411",
+      "doi": "10.1016/j.catena.2023.107411",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Bharti, R.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2022,
+      "title": "Understanding the entropy-based morphological variability and energy expenditure mechanism of a large braided river system",
+      "venue": "Journal of Hydrology",
+      "details": "615, 128662",
+      "doi": "10.1016/j.jhydrol.2022.128662",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Padhee, S. K.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "journal",
+      "year": 2022,
+      "title": "How dynamic is the Brahmaputra? Understanding the process–form–vegetation interactions for hierarchies of energy dissipation",
+      "venue": "Ecohydrology",
+      "details": "15(3), e2416",
+      "doi": "10.1002/eco.2416",
+      "citations": 0,
+      "quartile": "Q1",
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "year": 2022,
+      "title": "Development of a semi-distributed rainfall-runoff model for water budgeting in macropore dominated hilly river basins",
+      "venue": "Soil-Water, Agriculture, and Climate Change: Exploring Linkages",
+      "details": "pp. 17–34, Springer, Cham",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Padhee, S. K.",
+          "me": false
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "chapter",
+      "year": 2022,
+      "title": "Flow hydrodynamics influences due to flood plain sand mining in a meandering channel",
+      "venue": "North-East Research Conclave",
+      "details": "pp. 245–251, Springer Nature, Singapore",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Modalavalasa, S.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "chapter",
+      "year": 2022,
+      "title": "Effects of anthropogenic stress and water security in Himalayan urban river watershed",
+      "venue": "Int. Conference on River Corridor Research and Management (RCRM)",
+      "details": "pp. 187–199, Springer Nature, Singapore",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Kumar, A.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "chapter",
+      "year": 2022,
+      "title": "Numerical investigation of various turbulence models for a sinuous channel with sand mining pit",
+      "venue": "Int. Conference on River Corridor Research and Management (RCRM)",
+      "details": "pp. 95–106, Springer Nature, Singapore",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Modalavalasa, S.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2022,
+      "title": "Assessment of braided dynamics of a large river system with respect to the energy dissipation mechanism using cloud computing technique",
+      "venue": "AGU Fall Meeting",
+      "details": "EP32B-07",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2022,
+      "title": "Morphological characterization of large braided Brahmaputra River using high-resolution satellite imageries",
+      "venue": "Sustainable Technologies for River Erosion Alleviation and Management",
+      "details": "Guwahati, Assam",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2021,
+      "title": "Entropy based relation between in-stream green corridor and channel stability of a large braided Brahmaputra River",
+      "venue": "AGU Fall Meeting",
+      "details": "EP25C-1329",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Akkimi, A.",
+          "me": false
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2021,
+      "title": "Sediment transport and morphological characterization for a large braided river using hydrodynamic modeling",
+      "venue": "World's Large Rivers Conference",
+      "details": "Moscow, Russia",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2021,
+      "title": "Development of conceptual framework for hydro-ecological security across Himalayan river basins",
+      "venue": "RCRM-2021",
+      "details": "IIT Jammu",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Padhee, S.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2020,
+      "title": "Energy dissipation modeling in highly braided Brahmaputra River",
+      "venue": "HYDRO-2020",
+      "details": "NIT Rourkela · Best Presentation Award",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Sultan, J.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2019,
+      "title": "Groundwater recharge estimation with remote sensing inputs in Kosi Basin",
+      "venue": "ISRS-ISG National Symposium 2019",
+      "details": "NESAC, Meghalaya",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2017,
+      "title": "Short term stream-flow prediction for Hirakud Reservoir using ARIMA model",
+      "venue": "HYDRO-2017",
+      "details": "L. D. College of Engineering, Ahmedabad",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dash, A.",
+          "me": false
+        },
+        {
+          "name": "Das, P. K.",
+          "me": false
+        }
+      ],
+      "manual": true
+    }
+  ]
+}
