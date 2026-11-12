@@ -1,37 +1,34 @@
 {
   "updated": "2026-11-12",
-  "source": "Google Scholar",
+  "source": "OpenAlex",
   "metrics": {
-    "citations": 163,
-    "h_index": 7,
-    "i10_index": 7
+    "citations": 117,
+    "h_index": 6,
+    "i10_index": 6
   },
-  "citations_by_year": [],
-  "publications": [
+  "citations_by_year": [
     {
-      "type": "journal",
-      "year": 2027,
-      "title": "Process-based response of flow–vegetation interactions in bifurcated channel systems: A laboratory investigation",
-      "venue": "Journal of Hydraulic Engineering",
-      "details": "153(1), 04026059",
-      "doi": "10.1061/jhend8.hyeng-14905",
-      "citations": 0,
-      "quartile": "Q2",
-      "authors": [
-        {
-          "name": "Maurya, O. P.",
-          "me": false
-        },
-        {
-          "name": "Nandi, K. K.",
-          "me": true
-        },
-        {
-          "name": "Dutta, S.",
-          "me": false
-        }
-      ]
+      "year": 2022,
+      "citations": 3
     },
+    {
+      "year": 2023,
+      "citations": 16
+    },
+    {
+      "year": 2024,
+      "citations": 15
+    },
+    {
+      "year": 2025,
+      "citations": 30
+    },
+    {
+      "year": 2026,
+      "citations": 53
+    }
+  ],
+  "publications": [
     {
       "type": "journal",
       "year": 2026,
@@ -40,7 +37,6 @@
       "details": "362, 126518",
       "doi": "10.1016/j.oceaneng.2026.126518",
       "citations": 0,
-      "quartile": "Q1",
       "authors": [
         {
           "name": "Sahoo, S.",
@@ -58,7 +54,32 @@
           "name": "Khatua, K. K.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q1"
+    },
+    {
+      "type": "journal",
+      "year": 2026,
+      "title": "Process-Based Response of Flow-Vegetation Interactions in Bifurcated Channel Systems: A Laboratory Investigation",
+      "venue": "Journal of Hydraulic Engineering",
+      "details": "153(1)",
+      "doi": "10.1061/jhend8.hyeng-14905",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "quartile": "Q2"
     },
     {
       "type": "journal",
@@ -67,8 +88,7 @@
       "venue": "Journal of Ecohydraulics",
       "details": "1–15",
       "doi": "10.1080/24705357.2026.2636282",
-      "citations": 0,
-      "quartile": "Q2",
+      "citations": 2,
       "authors": [
         {
           "name": "Maurya, O. P.",
@@ -86,41 +106,17 @@
           "name": "Dutta, S.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q2"
     },
     {
       "type": "journal",
       "year": 2025,
-      "title": "Harnessing vegetation as a nature-based solution for integrated river corridor management: A path towards harmonized human–nature synergy",
+      "title": "Experimental Insights Into the Hydraulic Behaviour of Sinuous Channel due to Vegetated Floodplain Corridor",
       "venue": "Ecohydrology",
-      "details": "18(5), e70094",
-      "doi": "10.1002/eco.70094",
-      "citations": 0,
-      "quartile": "Q1",
-      "authors": [
-        {
-          "name": "Maurya, O. P.",
-          "me": false
-        },
-        {
-          "name": "Nandi, K. K.",
-          "me": true
-        },
-        {
-          "name": "Dutta, S.",
-          "me": false
-        }
-      ]
-    },
-    {
-      "type": "journal",
-      "year": 2025,
-      "title": "Experimental insights into the hydraulic behaviour of sinuous channel due to vegetated floodplain corridor",
-      "venue": "Ecohydrology",
-      "details": "18(5), e70084",
+      "details": "18(5)",
       "doi": "10.1002/eco.70084",
-      "citations": 0,
-      "quartile": "Q1",
+      "citations": 4,
       "authors": [
         {
           "name": "Modalavalasa, S.",
@@ -142,7 +138,32 @@
           "name": "Kulkarni, V.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q1"
+    },
+    {
+      "type": "journal",
+      "year": 2025,
+      "title": "Harnessing Vegetation as a Nature‐Based Solution for Integrated River Corridor Management: A Path Towards Harmonized Human–Nature Synergy",
+      "venue": "Ecohydrology",
+      "details": "18(5)",
+      "doi": "10.1002/eco.70094",
+      "citations": 14,
+      "authors": [
+        {
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "quartile": "Q1"
     },
     {
       "type": "journal",
@@ -151,8 +172,7 @@
       "venue": "Advances in Water Resources",
       "details": "189, 104727",
       "doi": "10.1016/j.advwatres.2024.104727",
-      "citations": 0,
-      "quartile": "Q1",
+      "citations": 21,
       "authors": [
         {
           "name": "Nandi, K. K.",
@@ -170,32 +190,44 @@
           "name": "Khatua, K. K.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q1"
     },
     {
-      "type": "journal",
-      "year": 2023,
-      "title": "Identifying the stability trajectory of a large braided Brahmaputra River using reach-scale process-based approach",
-      "venue": "Journal of Hydrology",
-      "details": "626, 130329",
-      "doi": "10.1016/j.jhydrol.2023.130329",
+      "type": "conference",
+      "year": 2024,
+      "title": "Exploring the Mechanisms and Vegetative Influence on River Bank Migration in Sinuous Channels",
+      "venue": "EGU General Assembly Conference Abstracts",
+      "details": "",
+      "doi": "10.5194/egusphere-egu24-2769",
       "citations": 0,
-      "quartile": "Q1",
       "authors": [
         {
-          "name": "Nandi, K. K.",
+          "name": "Maurya, O. P.",
+          "me": false
+        },
+        {
+          "name": "Modalavalasa, D. S.",
+          "me": false
+        },
+        {
+          "name": "Das, S.",
+          "me": false
+        },
+        {
+          "name": "Barman, P.",
+          "me": false
+        },
+        {
+          "name": "Das, A.",
+          "me": false
+        },
+        {
+          "name": "Nandi, D. K. K.",
           "me": true
         },
         {
-          "name": "Pradhan, C.",
-          "me": false
-        },
-        {
-          "name": "Dutta, S.",
-          "me": false
-        },
-        {
-          "name": "Khatua, K. K.",
+          "name": "Dutta, P. S.",
           "me": false
         }
       ]
@@ -207,8 +239,7 @@
       "venue": "CATENA",
       "details": "232, 107411",
       "doi": "10.1016/j.catena.2023.107411",
-      "citations": 0,
-      "quartile": "Q1",
+      "citations": 10,
       "authors": [
         {
           "name": "Pradhan, C.",
@@ -226,17 +257,17 @@
           "name": "Dutta, S.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q1"
     },
     {
       "type": "journal",
-      "year": 2022,
-      "title": "Understanding the entropy-based morphological variability and energy expenditure mechanism of a large braided river system",
+      "year": 2023,
+      "title": "Identifying the stability trajectory of a large braided Brahmaputra river using reach-scale process-based approach",
       "venue": "Journal of Hydrology",
-      "details": "615, 128662",
-      "doi": "10.1016/j.jhydrol.2022.128662",
-      "citations": 0,
-      "quartile": "Q1",
+      "details": "626, 130329",
+      "doi": "10.1016/j.jhydrol.2023.130329",
+      "citations": 12,
       "authors": [
         {
           "name": "Nandi, K. K.",
@@ -247,15 +278,39 @@
           "me": false
         },
         {
-          "name": "Padhee, S. K.",
-          "me": false
-        },
-        {
           "name": "Dutta, S.",
           "me": false
         },
         {
           "name": "Khatua, K. K.",
+          "me": false
+        }
+      ],
+      "quartile": "Q1"
+    },
+    {
+      "type": "conference",
+      "year": 2023,
+      "title": "Experimental Investigation of Flow-Turbulence Behaviour in a Channel with Vegetated Mid-Bar",
+      "venue": "EGU General Assembly Conference Abstracts",
+      "details": "",
+      "doi": "10.5194/egusphere-egu23-15950",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "U, A. K.",
+          "me": false
+        },
+        {
+          "name": "Paswan, A. K.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
           "me": false
         }
       ]
@@ -265,10 +320,9 @@
       "year": 2022,
       "title": "How dynamic is the Brahmaputra? Understanding the process–form–vegetation interactions for hierarchies of energy dissipation",
       "venue": "Ecohydrology",
-      "details": "15(3), e2416",
+      "details": "15(3)",
       "doi": "10.1002/eco.2416",
-      "citations": 0,
-      "quartile": "Q1",
+      "citations": 22,
       "authors": [
         {
           "name": "Nandi, K. K.",
@@ -286,16 +340,49 @@
           "name": "Khatua, K. K.",
           "me": false
         }
-      ]
+      ],
+      "quartile": "Q1"
+    },
+    {
+      "type": "journal",
+      "year": 2022,
+      "title": "Understanding the entropy-based morphological variability and energy expenditure mechanism of a large braided river system",
+      "venue": "Journal of Hydrology",
+      "details": "615, 128662",
+      "doi": "10.1016/j.jhydrol.2022.128662",
+      "citations": 23,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Padhee, S. K.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        },
+        {
+          "name": "Khatua, K. K.",
+          "me": false
+        }
+      ],
+      "quartile": "Q1"
     },
     {
       "type": "chapter",
       "year": 2022,
-      "title": "Development of a semi-distributed rainfall-runoff model for water budgeting in macropore dominated hilly river basins",
-      "venue": "Soil-Water, Agriculture, and Climate Change: Exploring Linkages",
-      "details": "pp. 17–34, Springer, Cham",
-      "doi": "",
-      "citations": 0,
+      "title": "Development of a Semi-distributed Rainfall-Runoff Model for Water Budgeting in Macropore Dominated Hilly River Basins",
+      "venue": "Water science and technology library",
+      "details": "17–34",
+      "doi": "10.1007/978-3-031-12059-6_2",
+      "citations": 1,
       "authors": [
         {
           "name": "Padhee, S. K.",
@@ -303,6 +390,29 @@
         },
         {
           "name": "Pradhan, C.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "year": 2022,
+      "title": "Effects of anthropogenic stress and water security in Himalayan urban river watershed",
+      "venue": "Int. Conference on River Corridor Research and Management (RCRM)",
+      "details": "pp. 187–199, Springer Nature, Singapore",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Kumar, A.",
           "me": false
         },
         {
@@ -336,30 +446,6 @@
         {
           "name": "Modalavalasa, S.",
           "me": false
-        },
-        {
-          "name": "Dutta, S.",
-          "me": false
-        }
-      ],
-      "manual": true
-    },
-    {
-      "type": "chapter",
-      "year": 2022,
-      "title": "Effects of anthropogenic stress and water security in Himalayan urban river watershed",
-      "venue": "Int. Conference on River Corridor Research and Management (RCRM)",
-      "details": "pp. 187–199, Springer Nature, Singapore",
-      "doi": "",
-      "citations": 0,
-      "authors": [
-        {
-          "name": "Kumar, A.",
-          "me": false
-        },
-        {
-          "name": "Nandi, K. K.",
-          "me": true
         },
         {
           "name": "Dutta, S.",
@@ -455,6 +541,61 @@
     {
       "type": "conference",
       "year": 2021,
+      "title": "Development of conceptual framework for hydro-ecological security across Himalayan river basins",
+      "venue": "RCRM-2021",
+      "details": "IIT Jammu",
+      "doi": "",
+      "citations": 0,
+      "authors": [
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Padhee, S.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ],
+      "manual": true
+    },
+    {
+      "type": "conference",
+      "year": 2021,
+      "title": "Effect of bridge pier induced turbulence on vegetated meander river morphology",
+      "venue": "EGU General Assembly Conference Abstracts",
+      "details": "",
+      "doi": "10.5194/egusphere-egu21-1465",
+      "citations": 1,
+      "authors": [
+        {
+          "name": "Modalavalasa, S.",
+          "me": false
+        },
+        {
+          "name": "Chembolu, V.",
+          "me": false
+        },
+        {
+          "name": "Nandi, K. K.",
+          "me": true
+        },
+        {
+          "name": "Kulkarni, V.",
+          "me": false
+        },
+        {
+          "name": "Dutta, S.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "type": "conference",
+      "year": 2021,
       "title": "Entropy based relation between in-stream green corridor and channel stability of a large braided Brahmaputra River",
       "venue": "AGU Fall Meeting",
       "details": "EP25C-1329",
@@ -503,30 +644,6 @@
         },
         {
           "name": "Khatua, K. K.",
-          "me": false
-        },
-        {
-          "name": "Dutta, S.",
-          "me": false
-        }
-      ],
-      "manual": true
-    },
-    {
-      "type": "conference",
-      "year": 2021,
-      "title": "Development of conceptual framework for hydro-ecological security across Himalayan river basins",
-      "venue": "RCRM-2021",
-      "details": "IIT Jammu",
-      "doi": "",
-      "citations": 0,
-      "authors": [
-        {
-          "name": "Nandi, K. K.",
-          "me": true
-        },
-        {
-          "name": "Padhee, S.",
           "me": false
         },
         {
