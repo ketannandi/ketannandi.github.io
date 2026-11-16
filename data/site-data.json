@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-16",
   "source": "OpenAlex",
   "metrics": {
-    "citations": 117,
+    "citations": 119,
     "h_index": 6,
     "i10_index": 6
   },
@@ -25,7 +25,7 @@
     },
     {
       "year": 2026,
-      "citations": 53
+      "citations": 55
     }
   ],
   "publications": [
@@ -148,7 +148,7 @@
       "venue": "Ecohydrology",
       "details": "18(5)",
       "doi": "10.1002/eco.70094",
-      "citations": 14,
+      "citations": 15,
       "authors": [
         {
           "name": "Maurya, O. P.",
@@ -267,7 +267,7 @@
       "venue": "Journal of Hydrology",
       "details": "626, 130329",
       "doi": "10.1016/j.jhydrol.2023.130329",
-      "citations": 12,
+      "citations": 13,
       "authors": [
         {
           "name": "Nandi, K. K.",
